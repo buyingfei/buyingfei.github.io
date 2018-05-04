@@ -7,7 +7,7 @@ title: 步迎飞个人博客
 subtitle: 天行健，君子以自强不息；地势坤，君子以厚德载物.
 description:
 keywords:
-author: John Doe
+author: buyingfei
 language: zh-CN
 timezone:
 
@@ -78,4 +78,6 @@ theme: BlueLake
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@github.com:buyingfei/buyingfei.github.io.git
+  branch: master
