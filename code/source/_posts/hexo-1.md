@@ -15,5 +15,6 @@ categories:
 * 不需要维护服务器，长时间不使用，不担心数据丢失，网站挂掉
 * 快速、简洁、高效，迅速利用靓丽的主题生成静态网页
 
-[hexo 开发API](https://hexo.io/zh-cn/docs/index.html)
+hexo 存在一个问题，安装好之后，如果更换电脑怎么办那？也是有办法的，在github 个人博客分支下，新建dev 分支，将hexo 生成文件都存放到dev 分支下，之后只需要安装好git、node 、hexo 就行
+具体hexo 安装参考 [hexo 官方文档](https://hexo.io/zh-cn/docs/index.html)
 
