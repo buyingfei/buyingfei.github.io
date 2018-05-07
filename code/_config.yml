@@ -79,5 +79,6 @@ theme: BlueLake1
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:buyingfei/buyingfei.github.io.git
-  branch: master
+  repo:
+       github: git@github.com:buyingfei/buyingfei.github.io.git,master
+       coding: git@git.coding.net:qianmo91/qianmo91.coding.me.git,master

@@ -249,10 +249,10 @@ server {
 ```bash
 sudo  tcpdump -i eth0  port 9588 -w /tmp/buyf.cap
 ```
-![websocket 请求](https://buyingfei.github.io/img/websocket.png)
+![websocket 请求](/source/websocket.png)
 
 使用Wireshark 进行网络分析
-![packets 详情](https://buyingfei.github.io/img/packets.png)
+![packets 详情](/source/packet.png)
 进而可以分析出整个通信过程。
 
 
