@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/05/11/limitqps/</loc>
-    <lastmod>2018-05-11T08:02:13.689Z</lastmod>
+    <lastmod>2018-05-11T08:04:57.408Z</lastmod>
     <data>
         <display>
         <title>简单 golang 接口限流</title>
@@ -15,6 +15,9 @@
          
          
            
+             
+              <breadCrumb title="golang" url="http://yoursite.com/categories/golang/"/>
+          
         </display>
     </data>
     </url>
