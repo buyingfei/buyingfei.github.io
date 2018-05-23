@@ -1,5 +1,5 @@
 ---
-title: golang 实现乐观锁
+title: 乐观锁及其实现
 date: 2018-05-15 14:36:06
 tags: golang mysql
 categories:
