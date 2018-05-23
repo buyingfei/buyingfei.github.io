@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>系统监控之sysstat 命令 | 陌上花开，缓缓归兮</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">系统监控之sysstat 命令</h1><a id="logo" href="/.">陌上花开，缓缓归兮</a><p class="description">天行健，君子以自强不息；地势坤，君子以厚德载物.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">系统监控之sysstat 命令</h1><div class="post-meta"><a href="/2018/05/24/sysstatcmd/" class="comment-count"></a><p><span class="date">May 24, 2018</span><span><a href="/categories/操作系统/" class="category">操作系统</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p><strong>sysstat 工具简介</strong><br>sysstat 是 Linux 系统中的常用工具包。它的主要用途是观察服务负载，比如CPU和内存的占用率、网络的使用率以及磁盘写入和读取速度等。</p>
+<p><strong>sysstat 安装</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install sysstat</span><br><span class="line"><span class="comment"># 安装成功后，会生成这个文件[/etc/cron.d/sysstat ] 定时生成系统统计信息</span></span><br><span class="line"><span class="comment"># sudo  cat /etc/cron.d/sysstat</span></span><br><span class="line"><span class="comment"># 默认是每10 分钟生成一次，开发环境修改为每一分钟生成一次统计信息 </span></span><br><span class="line"><span class="comment"># 默认生成日志文件路径[cd	/var/log/sa]</span></span><br></pre></td></tr></table></figure></p>
+<p>图示如下：<br><img src="/source/sysstatcron.png" alt="sysstat 定时统计脚本"></p>
+<p><strong>sar 命令</strong><br>在使用 Linux 系统时，常常会遇到各种各样的问题，比如系统容易死机或者运行速度突然变慢，这时我们常常猜测：是否硬盘空间不足，是否内存不足，是否 I/O 出现瓶颈，还是系统的核心参数出了问题？这时，我们应该考虑使用 sar 工具对系统做一个全面了解，分析系统的负载状况。</p>
+<p><strong>输出进程队列长度和平均负载状态统计信息</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输出进程队列长度和平均负载状态统计信息</span></span><br><span class="line"> [root@172.16.0.56:/var/<span class="built_in">log</span>/sa]$ sar -q</span><br><span class="line"> Linux 2.6.32-431.el6.x86_64 (node56) 	05/23/2018 	_x86_64_	(2 CPU)</span><br><span class="line"> </span><br><span class="line"> 12:00:01 AM   runq-sz  plist-sz   ldavg-1   ldavg-5  ldavg-15</span><br><span class="line"> 12:10:01 AM        26       339      0.19      0.88      1.11</span><br><span class="line"> 12:20:01 AM        27       333      0.57      1.02      1.10</span><br><span class="line"> 12:30:01 AM        30       345      0.81      0.87      0.98</span><br><span class="line"> 12:40:01 AM        26       340      0.07      0.44      0.75</span><br><span class="line"> 12:50:01 AM        28       331      0.05      0.21      0.49</span><br><span class="line"> 01:00:01 AM        32       359      0.12      0.13      0.32</span><br><span class="line"> 01:10:01 AM        25       344      0.06      0.08      0.18</span><br></pre></td></tr></table></figure></p>
+<p>输出项说明：</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>runq-sz</td>
+<td style="text-align:center">等待执行的任务队列长度，越长越阻塞</td>
+</tr>
+<tr>
+<td>plist-sz</td>
+<td style="text-align:center">进程列表中进程（processes）和线程（threads）的数量</td>
+</tr>
+<tr>
+<td>ldavg-1</td>
+<td style="text-align:center">最后1分钟的系统平均负载（System load average）</td>
+</tr>
+<tr>
+<td>ldavg-5</td>
+<td style="text-align:center">过去5分钟的系统平均负载</td>
+</tr>
+<tr>
+<td>ldavg-15</td>
+<td style="text-align:center">过去15分钟的系统平均负载</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>重点注意ldavg，代表 cpu 任务数，繁重程度,超过cpu 个数，为超负载运行 （注意观察负载变化是否剧烈）</li>
+</ul>
+<p><strong>输出CPU使用情况的统计信息</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@172.16.0.56:/var/<span class="built_in">log</span>/sa]$ sar -u</span><br><span class="line">Linux 2.6.32-431.el6.x86_64 (node56) 	05/23/2018 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">12:00:01 AM     CPU     %user     %nice   %system   %iowait    %steal     %idle</span><br><span class="line">12:10:01 AM     all      1.66      0.00      0.89      0.08      0.01     97.36</span><br><span class="line">12:20:01 AM     all      1.56      0.00      0.81      0.07      0.01     97.55</span><br><span class="line">12:30:01 AM     all      1.58      0.00      0.84      0.35      0.01     97.21</span><br><span class="line">12:40:01 AM     all      1.57      0.00      0.82      0.06      0.01     97.54</span><br><span class="line">12:50:01 AM     all      1.57      0.00      0.82      0.05      0.01     97.54</span><br><span class="line">01:00:01 AM     all      1.56      0.00      0.82      0.05      0.01     97.55</span><br><span class="line">01:10:01 AM     all      1.64      0.00      0.86      0.14      0.01     97.35</span><br></pre></td></tr></table></figure></p>
+<p>输出项说明：</p>
+<table>
+<thead>
+<tr>
+<th>cpu</th>
+<th style="text-align:center">all 表示统计信息为所有 CPU 的平均值。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%user</td>
+<td style="text-align:center">显示在用户级别(application)运行使用 CPU 总时间的百分比。</td>
+</tr>
+<tr>
+<td>%nice</td>
+<td style="text-align:center">显示在用户级别，用于nice操作，所占用 CPU 总时间的百分比。</td>
+</tr>
+<tr>
+<td>%system</td>
+<td style="text-align:center">在核心级别(kernel)运行所使用 CPU 总时间的百分比。</td>
+</tr>
+<tr>
+<td>%iowait</td>
+<td style="text-align:center">cpu 等待io占用 CPU 总时间的百分比。（值越高，等待磁盘读写压力越大，瓶颈在磁盘）</td>
+</tr>
+<tr>
+<td>%steal</td>
+<td style="text-align:center">管理进程等待cpu 占用 CPU 总时间的百分比。（值越高，cpu 繁重程度越高）</td>
+</tr>
+<tr>
+<td>%idle</td>
+<td style="text-align:center">显示 CPU 空闲时间占用 CPU 总时间的百分比。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>若 %iowait 的值过高，表示硬盘存在I/O瓶颈</li>
+<li>若 %idle 的值高但系统响应慢时，有可能是 CPU 等待分配内存，此时应加大内存容量</li>
+<li>若 %idle 的值持续低于 10，则系统的 CPU 处理能力相对较低，表明系统中最需要解决的资源是 CPU。</li>
+</ul>
+<p><strong>输出内存和交换空间的统计信息</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@172.16.0.56:/var/<span class="built_in">log</span>/sa]$ sar -r</span><br><span class="line">Linux 2.6.32-431.el6.x86_64 (node56) 	05/23/2018 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">12:00:01 AM kbmemfree kbmemused  %memused kbbuffers  kbcached  kbcommit   %commit</span><br><span class="line">12:10:01 AM    560300   3362440     85.72    636624   1060076   3352040     27.23</span><br><span class="line">12:20:01 AM    537124   3385616     86.31    636836   1079920   3378996     27.45</span><br><span class="line">12:30:01 AM    513536   3409204     86.91    637044   1096120   3410272     27.70</span><br><span class="line">12:40:01 AM    511468   3411272     86.96    637204   1103256   3357232     27.27</span><br><span class="line">12:50:01 AM    488416   3434324     87.55    637340   1124880   3389172     27.53</span><br><span class="line">01:00:01 AM    457144   3465596     88.35    637556   1134900   3407764     27.68</span><br></pre></td></tr></table></figure></p>
+<p>输出项说明：</p>
+<table>
+<thead>
+<tr>
+<th>cpu</th>
+<th style="text-align:center">all 表示统计信息为所有 CPU 的平均值。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kbmemfree</td>
+<td style="text-align:center">可用的空闲内存数量，单位为 KB</td>
+</tr>
+<tr>
+<td>kbmemused</td>
+<td style="text-align:center">已使用的内存数量（不包含内核使用的内存），单位为 KB</td>
+</tr>
+<tr>
+<td>%memused</td>
+<td style="text-align:center">已使用内存的百分数</td>
+</tr>
+<tr>
+<td>kbbuffers</td>
+<td style="text-align:center">磁盘块缓存的内存数量，单位为 KB</td>
+</tr>
+<tr>
+<td>kbcached</td>
+<td style="text-align:center">磁盘文件缓存的内存数量，单位为 KB</td>
+</tr>
+<tr>
+<td>kbcached</td>
+<td style="text-align:center">程序要执行下去，系统评估还需要多少缓存的内存数量，单位为 KB</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>如果 %memused +  %commit &gt; 100% ,内存很危险</li>
+</ul>
+<p><strong>物理内存放硬盘 情况</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@172.16.0.56:/var/<span class="built_in">log</span>/sa]$ sar -B</span><br><span class="line">Linux 2.6.32-431.el6.x86_64 (node56) 	05/23/2018 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">12:00:01 AM  pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s pgscand/s pgsteal/s    %vmeff</span><br><span class="line">12:10:01 AM      0.29    138.03   5137.86      0.01   2500.29      0.00      0.00      0.00      0.00</span><br><span class="line">12:20:01 AM      0.45    136.06   4935.45      0.01   2409.97      0.00      0.11      0.11    100.00</span><br><span class="line">12:30:01 AM      0.13    135.86   5002.52      0.01   2419.22      0.00      0.05      0.05    100.00</span><br><span class="line">12:40:01 AM      0.09    135.66   5012.26      0.01   2436.21      0.00      0.11      0.11    100.00</span><br><span class="line">12:50:01 AM      0.00    135.86   4938.99      0.00   2416.47      0.00      0.11      0.11    100.00</span><br><span class="line">01:00:01 AM      0.00    136.01   5057.40      0.00   2445.28      0.00      0.11      0.11    100.00</span><br><span class="line">01:10:01 AM      0.49    145.58   5024.75      0.01   2445.67      0.00      0.00      0.00      0.00</span><br><span class="line">01:20:02 AM      0.00    137.24   4969.16      0.00   2430.44      0.00      0.16      0.16     98.96</span><br><span class="line">01:30:01 AM      0.00    136.91   4989.06      0.00   2403.75      0.00      0.11</span><br></pre></td></tr></table></figure></p>
+<p>输出项说明：</p>
+<table>
+<thead>
+<tr>
+<th>table</th>
+<th style="text-align:center">col</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pgpgin/s</td>
+<td style="text-align:center">每秒钟从磁盘读入的系统页面的 KB 总数</td>
+</tr>
+<tr>
+<td>pgpgout/s</td>
+<td style="text-align:center">每秒钟向磁盘写出的系统页面的 KB 总数</td>
+</tr>
+<tr>
+<td>fault/s</td>
+<td style="text-align:center">系统每秒产生的页面失效(major + minor)数量</td>
+</tr>
+<tr>
+<td>majflt/s</td>
+<td style="text-align:center">系统每秒产生的页面失效(major)数量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>显示I/O和传送速率的统计信息</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@172.16.0.56:/var/<span class="built_in">log</span>/sa]$ sar -b</span><br><span class="line">Linux 2.6.32-431.el6.x86_64 (node56) 	05/23/2018 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">12:00:01 AM       tps      rtps      wtps   bread/s   bwrtn/s</span><br><span class="line">12:10:01 AM      5.62      0.04      5.59      0.59    276.05</span><br><span class="line">12:20:01 AM      5.45      0.04      5.41      0.91    272.12</span><br><span class="line">12:30:01 AM      5.48      0.02      5.46      0.25    271.73</span><br><span class="line">12:40:01 AM      5.44      0.02      5.42      0.19    271.31</span><br><span class="line">12:50:01 AM      5.35      0.00      5.35      0.00    271.72</span><br><span class="line">01:00:01 AM      5.44      0.00      5.44      0.00    272.02</span><br><span class="line">01:10:01 AM      5.95      0.08      5.88      0.99    291.15</span><br></pre></td></tr></table></figure></p>
+<p>输出项说明：</p>
+<table>
+<thead>
+<tr>
+<th>table</th>
+<th style="text-align:center">col</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tps</td>
+<td style="text-align:center">每秒钟 物理设备请求次数</td>
+</tr>
+<tr>
+<td>rtps</td>
+<td style="text-align:center">每秒从物理设备读入请求次数</td>
+</tr>
+<tr>
+<td>wtps</td>
+<td style="text-align:center">每秒向物理设备写入请求次</td>
+</tr>
+<tr>
+<td>bread/s</td>
+<td style="text-align:center">每秒从物理设备读入请求次数，单位为 块/s</td>
+</tr>
+<tr>
+<td>bwrtn/s</td>
+<td style="text-align:center">每秒向物理设备写入请求次，单位为 块/s</td>
+</tr>
+</tbody>
+</table>
+</div><div class="tags"><a href="/tags/测试-sysstat-系统监控/">测试 sysstat 系统监控</a></div><div class="post-share"></div><div class="post-nav"><a href="/2018/05/23/topcmd/" class="next">系统监控之top 命令</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/24/sysstatcmd/">系统监控之sysstat 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/23/topcmd/">系统监控之top 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/15/optimismlock/">乐观锁及其实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/11/limitqps/">简单 golang 接口限流</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/07/crawlerpacket/">tcpdump 抓包及Wireshark 解析包实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/hexo-1/">hexo 初体验</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/golang/数据库/">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web开发/">web开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/网络抓包/" style="font-size: 15px;">网络抓包</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/限制流量-golang-高并发/" style="font-size: 15px;">限制流量 golang 高并发</a> <a href="/tags/golang-mysql/" style="font-size: 15px;">golang mysql</a> <a href="/tags/测试-sysstat-系统监控/" style="font-size: 15px;">测试 sysstat 系统监控</a> <a href="/tags/测试-top-系统监控/" style="font-size: 15px;">测试 top 系统监控</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://juejin.im/timeline" title="掘金" target="_blank">掘金</a><ul></ul><a href="https://blog.csdn.net/buyingfei8888" title="个人 csdn 主页" target="_blank">个人 csdn 主页</a><ul></ul><a href="https://github.com/buyingfei" title="github 主页" target="_blank">github 主页</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">buyingfei.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c78ed4e2297aa87ec961c4c3cdb3a6a3";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
