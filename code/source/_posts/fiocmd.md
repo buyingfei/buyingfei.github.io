@@ -3,7 +3,7 @@ title: 压力测试 之io 测试
 date: 2018-05-21 20:49:08
 tags: 测试 fio 系统监控
 categories:
-- 操作系统
+- 压力测试
 ---
 
 **fio 工具简介**
