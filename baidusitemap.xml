@@ -5,7 +5,27 @@
     
   <url>
     <loc>http://yoursite.com/2018/05/24/sysstatcmd/</loc>
-    <lastmod>2018-05-23T12:01:13.770Z</lastmod>
+    <lastmod>2018-05-23T12:27:44.077Z</lastmod>
+    <data>
+        <display>
+        <title>系统监控之sysstat 命令</title>
+        <pubTime>2018-05-24T07:49:05.000Z</pubTime>
+        
+        <tag>测试 sysstat 系统监控</tag>
+         
+         
+           
+             
+              <breadCrumb title="操作系统" url="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/24/fiocmd/</loc>
+    <lastmod>2018-05-23T12:05:49.342Z</lastmod>
     <data>
         <display>
         <title>系统监控之sysstat 命令</title>
