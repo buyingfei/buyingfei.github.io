@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/05/24/abtool/</loc>
-    <lastmod>2018-05-24T03:04:40.833Z</lastmod>
+    <loc>http://yoursite.com/2018/05/21/fiocmd/</loc>
+    <lastmod>2018-05-24T03:08:36.910Z</lastmod>
     <data>
         <display>
-        <title>ab 找到系统qps</title>
-        <pubTime>2018-05-24T02:33:20.000Z</pubTime>
+        <title>压力测试 之系统io 性能</title>
+        <pubTime>2018-05-21T12:49:08.000Z</pubTime>
         
-        <tag>压力测试 ab</tag>
+        <tag>测试 fio 系统监控</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/05/21/fiocmd/</loc>
-    <lastmod>2018-05-23T12:48:40.365Z</lastmod>
+    <loc>http://yoursite.com/2018/05/24/abtool/</loc>
+    <lastmod>2018-05-24T03:07:50.341Z</lastmod>
     <data>
         <display>
-        <title>压力测试 之io 测试</title>
-        <pubTime>2018-05-21T12:49:08.000Z</pubTime>
+        <title>压力测试之ab 找到系统qps及负载</title>
+        <pubTime>2018-05-24T02:33:20.000Z</pubTime>
         
-        <tag>测试 fio 系统监控</tag>
+        <tag>压力测试 ab</tag>
          
          
            
