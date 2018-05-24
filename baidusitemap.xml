@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/05/24/abtool/</loc>
+    <lastmod>2018-05-24T03:04:40.833Z</lastmod>
+    <data>
+        <display>
+        <title>ab 找到系统qps</title>
+        <pubTime>2018-05-24T02:33:20.000Z</pubTime>
+        
+        <tag>压力测试 ab</tag>
+         
+         
+           
+             
+              <breadCrumb title="压力测试" url="http://yoursite.com/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/05/21/fiocmd/</loc>
     <lastmod>2018-05-23T12:48:40.365Z</lastmod>
     <data>
