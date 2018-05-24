@@ -1,7 +1,10 @@
 ---
 title: 系统监控之top 命令
 date: 2018-05-23 17:42:05
-tags: 测试 top 系统监控
+tags: 
+- 测试 
+- top 
+- 系统监控
 categories:
 - 操作系统
 ---

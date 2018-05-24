@@ -1,7 +1,9 @@
 ---
 title: 乐观锁及其实现
 date: 2018-05-15 14:36:06
-tags: golang mysql
+tags: 
+- golang
+- mysql
 categories:
 - golang
 - 数据库

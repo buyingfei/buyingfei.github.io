@@ -1,7 +1,10 @@
 ---
 title: 系统监控之sysstat 命令
 date: 2018-05-24 22:49:08
-tags: 测试 sysstat 系统监控
+tags: 
+- 测试 
+- sysstat 
+- 系统监控
 categories:
 - 操作系统
 ---
