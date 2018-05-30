@@ -4,6 +4,53 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/05/30/php-fpm/</loc>
+    <lastmod>2018-05-30T03:08:36.963Z</lastmod>
+    <data>
+        <display>
+        <title>php-fpm 性能调优</title>
+        <pubTime>2018-05-30T02:11:56.000Z</pubTime>
+        
+        <tag>测试</tag>
+         
+        <tag>系统监控</tag>
+         
+         
+           
+             
+              <breadCrumb title="压力测试" url="http://yoursite.com/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
+          
+             
+              <breadCrumb title="操作系统" url="http://yoursite.com/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/24/abtool/</loc>
+    <lastmod>2018-05-24T06:34:16.311Z</lastmod>
+    <data>
+        <display>
+        <title>压力测试之ab 找到系统qps及负载</title>
+        <pubTime>2018-05-24T02:33:20.000Z</pubTime>
+        
+        <tag>压力测试</tag>
+         
+        <tag>ab</tag>
+         
+         
+           
+             
+              <breadCrumb title="压力测试" url="http://yoursite.com/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/05/21/fiocmd/</loc>
     <lastmod>2018-05-24T03:34:51.686Z</lastmod>
     <data>
@@ -118,28 +165,6 @@
            
              
               <breadCrumb title="golang" url="http://yoursite.com/categories/golang/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/05/24/abtool/</loc>
-    <lastmod>2018-05-24T03:33:01.793Z</lastmod>
-    <data>
-        <display>
-        <title>压力测试之ab 找到系统qps及负载</title>
-        <pubTime>2018-05-24T02:33:20.000Z</pubTime>
-        
-        <tag>压力测试</tag>
-         
-        <tag>ab</tag>
-         
-         
-           
-             
-              <breadCrumb title="压力测试" url="http://yoursite.com/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
           
         </display>
     </data>
