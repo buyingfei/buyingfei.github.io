@@ -236,3 +236,6 @@ Percentage of the requests served within a certain time (ms)
 这是否达到系统极限那？
 通过sar -q、sar -u、sar -r 分析
 系统cpu 占用还不到50%，IO 没有等待时长、内存也在系统承受范围之内，此时需要调整nginx 、php-fpm 等相关配置，来充分发挥系统性能。
+
+
+
