@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-30T03:08:36.963Z</updated>
+  <updated>2018-06-25T10:24:33.572Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>composer 生成自己项目</title>
+    <link href="http://yoursite.com/2018/06/25/composerRepo/"/>
+    <id>http://yoursite.com/2018/06/25/composerRepo/</id>
+    <published>2018-06-25T12:24:07.000Z</published>
+    <updated>2018-06-25T10:24:33.572Z</updated>
+    
+    <content type="html"><![CDATA[<p>写一个插件，想能不能通过composer 来引入，这样更方便大家使用，开始探索之旅。</p><p><strong>github 上新建项目</strong><br>例如新建项目：<a href="https://github.com/buyingfei/buyingfei.github.io.git" target="_blank" rel="noopener">https://github.com/buyingfei/buyingfei.github.io.git</a></p><p><strong>git clone 到本地</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 项目地址</span><br></pre></td></tr></table></figure></p><p><strong>composer init 生成composer.json 文件架构，并对composer.json 文件进行修改</strong><br>此为项目结构<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ tree .</span><br><span class="line">.</span><br><span class="line">├── composer.json</span><br><span class="line">├── example</span><br><span class="line">│   ├── cli_xml.php</span><br><span class="line">│   ├── composer_xml.php</span><br><span class="line">│   └── test.xml</span><br><span class="line">├── README.md</span><br><span class="line">├── src</span><br><span class="line">│   ├── ArrayToXML.php</span><br><span class="line">│   └── Exception.php</span><br><span class="line">└── vendor</span><br><span class="line">    ├── autoload.php</span><br><span class="line">    └── composer</span><br><span class="line">        ├── autoload_classmap.php</span><br><span class="line">        ├── autoload_namespaces.php</span><br><span class="line">        ├── autoload_psr4.php</span><br><span class="line">        ├── autoload_real.php</span><br><span class="line">        ├── autoload_static.php</span><br><span class="line">        ├── ClassLoader.php</span><br><span class="line">        └── LICENSE</span><br></pre></td></tr></table></figure></p><p>主要修改composer.json，增加psr-4,完成文件映射</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"autoload"</span>: &#123;</span><br><span class="line">        <span class="string">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="string">"parseArray\\"</span>: <span class="string">"./src/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure><p><strong>生成composer vendor 等文件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer dumpautoload</span><br></pre></td></tr></table></figure></p><p><strong>注册<a href="https://packagist.org" target="_blank" rel="noopener">https://packagist.org</a> 账号，并获取token</strong><br><img src="/source/packagisttoken.png" alt="token 界面"></p><p><strong>完成本地调试后，push  github 服务器，并进行代码同步设置</strong><br><img src="/source/githubpack.png" alt="github设置页"></p><p>complate！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;写一个插件，想能不能通过composer 来引入，这样更方便大家使用，开始探索之旅。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;github 上新建项目&lt;/strong&gt;&lt;br&gt;例如新建项目：&lt;a href=&quot;https://github.com/buyingfei/buyingfei
+      
+    
+    </summary>
+    
+      <category term="web开发" scheme="http://yoursite.com/categories/web%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="composer" scheme="http://yoursite.com/tags/composer/"/>
+    
+  </entry>
   
   <entry>
     <title>php-fpm 性能调优</title>
